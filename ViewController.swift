@@ -8,14 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController { //added in UIControl
+class ViewController: UIViewController {
     
-//    var currentCircleCenter = CGPoint.zero
     var currentPath: Path = Path(points: [], width: 0, color: UIColor.white, shape: "Circle")
-//    var currentPath:PathView!
     var pathCanvas: PathView!
     var currentWidth: CGFloat = 10
-//    var paths: [PathView] = []
     var currentColor = UIColor.black
     var lastDrawn: [Path?] = []
     var currentShape = "Circle"
@@ -24,9 +21,6 @@ class ViewController: UIViewController { //added in UIControl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-//        pathView.thePath = Path(points: [], width: 0, color: UIColor.white)
-//        myRect = CGRect(x:0, y:0, width:pathView.frame.width, height: (pathView.frame.height - 40))
         myRect = CGRect(x:0, y:0, width:pathView.frame.width, height: (pathView.frame.height - 40))
         pathCanvas = PathView(frame: myRect)
         pathView.addSubview(pathCanvas)
@@ -36,7 +30,6 @@ class ViewController: UIViewController { //added in UIControl
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBOutlet weak var clearButton: UIBarButtonItem!
@@ -130,7 +123,7 @@ class ViewController: UIViewController { //added in UIControl
             let red = ac.textFields![0]
             let green = ac.textFields![1]
             let blue = ac.textFields![2]
-            //do something with answer here
+            
             if let redValue = Float(red.text!) {
                 if redValue >= 0 && redValue <= 240 {
                     if let greenValue = Float(green.text!) {
@@ -219,11 +212,6 @@ class ViewController: UIViewController { //added in UIControl
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touchPoint = touches.first?.location(in: view) else { return }
         print("ended at \(touchPoint)")
-        /* 
-        pathView.thePath?.points.append(touchPoint)
-//        currentPath.points.append(touchPoint)
-        pathView.paths.append(currentPath)
- */
         if currentPath.points.count != 0 {
             pathCanvas.thePath = nil
             pathCanvas.paths.append(currentPath)
