@@ -10,9 +10,8 @@ import UIKit
 
 class PathView: UIView {
     
-//    var circleRadius:CGFloat //update with slider
     
-    var thePath:Path? { //Path or UIBezierPath
+    var thePath:Path? {
         didSet {
             setNeedsDisplay()
         }
@@ -25,13 +24,11 @@ class PathView: UIView {
     }
     
     override init(frame: CGRect) {
-//        circleRadius = 0;
         super.init(frame: frame)
         self.backgroundColor = UIColor.clear
     }
     
     required init?(coder aDecoder: NSCoder) {
-//        circleRadius = 0;
         super.init(coder: aDecoder)
     }
     
@@ -58,30 +55,9 @@ class PathView: UIView {
         path.addLine(to: lastLocation)
         return path
     }
-    
-//    func drawCircle(_ circle: Circle) {
-//        currentColor.setFill()
-//        let path = createQuadPath(points: thePath!.points)
-////        let path = UIBezierPath()
-////        path.addArc(withCenter: circle.center, radius: circle.radius, startAngle: 0, endAngle: CGFloat(Float.pi*2), clockwise: true) //probably need to change startAngle or change this so that one click will create a dot
-//        path.fill()
-//    }
+
     
     func drawPath(_ path: Path) {
-//        if (thePath == nil) {
-//            return
-//        }
-//        for path in paths {
-//
-//        }
-//        currentColor.setStroke()
-//        currentColor.setFill()
-        /*
-        thePath?.color.setStroke()
-        thePath?.color.setFill()
-        let path1 = createQuadPath(points: thePath!.points)
-        path1.lineWidth = (thePath?.width)!
-        */
         path.color.setStroke()
         path.color.setFill()
         let path1 = createQuadPath(points: path.points)
@@ -94,11 +70,6 @@ class PathView: UIView {
                 return
             }
             if path.shape == "Thick" {
-//                let triangle1 = Triangles.makeTriangle(point: path.points[0])
-//                let triangle2 = Triangles.makeTriangle(point: path.points[path.points.count - 1])
-//                triangle1.fill()
-//                triangle2.fill()
-                
                 for i in 1..<path.points.count {
                     let circle1 = Circles.makeCircle(point: path.points[0], radius: CGFloat(path1.lineWidth/2))
                     let circle2 = Circles.makeCircle(point: path.points[i], radius: CGFloat(path1.lineWidth/2 + CGFloat(i/5)))
